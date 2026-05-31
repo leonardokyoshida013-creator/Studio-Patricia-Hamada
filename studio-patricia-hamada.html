@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Patricia Hamada</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f4;
+    --warm-white: #f5f0eb;
+    --gold: #b8965a;
+    --gold-light: #d4af7a;
+    --dark: #1a1510;
+    --muted: #7a6e65;
+    --accent: #c4a882;
+    --section-bg: #f9f5f1;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  header {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--dark);
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 80%, rgba(184,150,90,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 80% 20%, rgba(184,150,90,0.12) 0%, transparent 60%);
+  }
+
+  .hero-ornament {
+    position: absolute;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,150,90,0.2);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    animation: pulse-ring 6s ease-in-out infinite;
+  }
+  .hero-ornament::after {
+    content: '';
+    position: absolute;
+    inset: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,150,90,0.12);
+  }
+
+  @keyframes pulse-ring {
+    0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.6; }
+    50% { transform: translate(-50%,-50%) scale(1.04); opacity: 1; }
+  }
+
+  .hero-logo {
+    position: relative;
+    z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    line-height: 1;
+    animation: fadeDown 1.2s ease both;
+  }
+
+  .hero-subtitle {
+    position: relative; z-index: 2;
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-top: 1rem;
+    animation: fadeDown 1.2s 0.3s ease both;
+  }
+
+  .hero-tagline {
+    position: relative; z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: rgba(255,255,255,0.35);
+    margin-top: 0.5rem;
+    animation: fadeDown 1.2s 0.5s ease both;
+  }
+
+  .hero-cta {
+    position: relative; z-index: 2;
+    margin-top: 3rem;
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    animation: fadeDown 1.2s 0.7s ease both;
+  }
+
+  .btn-gold {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.9rem 2.2rem;
+    background: var(--gold);
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.9rem 2.2rem;
+    border: 1px solid rgba(184,150,90,0.5);
+    color: rgba(255,255,255,0.7);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(26,21,16,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(184,150,90,0.2);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    display: flex; gap: 0; list-style: none; overflow-x: auto;
+  }
+  .nav-links a {
+    display: block;
+    padding: 0 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.3s;
+    white-space: nowrap;
+    line-height: 64px;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::before, .section-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--gold); opacity: 0.3; max-width: 60px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* ── PRICE CARDS ── */
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .price-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.4rem;
+    background: #fff;
+    border-left: 3px solid var(--gold);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    gap: 1.2rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .price-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+  }
+
+  .price-name {
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: #3a3028;
+    text-transform: uppercase;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .price-value {
+    font-family: 'Jost', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--gold);
+    white-space: nowrap;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
+    background: rgba(184,150,90,0.1);
+    padding: 0.35rem 0.75rem;
+    border-radius: 3px;
+  }
+
+  /* alternate section backgrounds */
+  .bg-warm {
+    background: var(--warm-white);
+    padding: 6rem 2rem;
+  }
+  .bg-warm section { margin: 0 auto; }
+
+  .bg-dark-section {
+    background: var(--dark);
+    padding: 6rem 2rem;
+  }
+  .bg-dark-section .section-title { color: #fff; }
+  .bg-dark-section .price-item { background: rgba(255,255,255,0.06); border-left-color: var(--gold); }
+  .bg-dark-section .price-item:hover { background: rgba(255,255,255,0.1); }
+  .bg-dark-section .price-name { color: rgba(255,255,255,0.85); }
+
+  /* ── DIVIDER ── */
+  .ornament-divider {
+    text-align: center;
+    padding: 1rem 0;
+    color: var(--gold);
+    font-size: 1.4rem;
+    opacity: 0.4;
+    letter-spacing: 1rem;
+  }
+
+  /* ── WHATSAPP FLOAT ── */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 2rem; right: 2rem;
+    z-index: 999;
+    width: 58px; height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: bounce-in 1s 2s ease both;
+  }
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+  }
+  .whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
+
+  @keyframes bounce-in {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* ── CONTACT BANNER ── */
+  .contact-banner {
+    background: var(--dark);
+    text-align: center;
+    padding: 5rem 2rem;
+  }
+  .contact-banner h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .contact-banner p {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+  .contact-banner .address {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem;
+    margin-top: 1.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  .wa-btn {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    background: #25D366;
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .wa-btn:hover { background: #1ebe58; transform: translateY(-2px); }
+  .wa-btn svg { width: 20px; height: 20px; fill: #fff; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0f0c09;
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255,255,255,0.2);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ── SCROLL ANIMATION ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .price-grid { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- WhatsApp Float -->
+<a class="whatsapp-float" href="https://wa.me/5511948979150" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-brand">Studio Patricia Hamada</div>
+  <ul class="nav-links">
+    <li><a href="#manicure">Manicure</a></li>
+    <li><a href="#sobrancelhas">Sobrancelhas</a></li>
+    <li><a href="#massagem">Massagem</a></li>
+    <li><a href="#cabelos">Cabelos</a></li>
+    <li><a href="#depilacao">Depilação</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header>
+  <div class="hero-ornament"></div>
+  <div class="hero-logo">PH</div>
+  <div class="hero-subtitle">Studio Patricia Hamada</div>
+  <div class="hero-tagline">Beleza & Bem-estar · São Bernardo do Campo</div>
+  <div class="hero-cta">
+    <a href="https://wa.me/5511948979150" target="_blank" class="btn-gold">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Agendar pelo WhatsApp
+    </a>
+    <a href="#manicure" class="btn-outline">Ver Serviços</a>
+  </div>
+</header>
+
+<!-- MANICURE -->
+<div id="manicure" class="bg-warm">
+  <section>
+    <div class="section-label reveal">Serviços</div>
+    <h2 class="section-title reveal"><em>Manicure</em></h2>
+    <div class="price-grid reveal">
+      <div class="price-item"><span class="price-name">Mão</span><span class="price-value">R$ 30</span></div>
+      <div class="price-item"><span class="price-name">Pé</span><span class="price-value">R$ 35</span></div>
+      <div class="price-item"><span class="price-name">Pé Finalizado com Lixa e Esfoliação</span><span class="price-value">R$ 45</span></div>
+      <div class="price-item"><span class="price-name">Francesinha</span><span class="price-value">R$ 5 +</span></div>
+    </div>
+  </section>
+</div>
+
+<!-- SOBRANCELHAS -->
+<div id="sobrancelhas" style="background: var(--cream);">
+  <section>
+    <div class="section-label reveal">Serviços</div>
+    <h2 class="section-title reveal">Sobrancelhas & <em>Cílios</em></h2>
+    <div class="price-grid reveal">
+      <div class="price-item"><span class="price-name">Sobrancelhas + Designer</span><span class="price-value">R$ 45</span></div>
+      <div class="price-item"><span class="price-name">Designer + Henna</span><span class="price-value">R$ 85</span></div>
+      <div class="price-item"><span class="price-name">Extensão de Cílios</span><span class="price-value">R$ 170</span></div>
+      <div class="price-item"><span class="price-name">Manutenção de Cílios</span><span class="price-value">R$ 95</span></div>
+      <div class="price-item"><span class="price-name">Brow Lamination</span><span class="price-value">R$ 200</span></div>
+      <div class="price-item"><span class="price-name">Brow Lamination + Tintura</span><span class="price-value">R$ 250</span></div>
+      <div class="price-item"><span class="price-name">Lash Lifting</span><span class="price-value">R$ 200</span></div>
+      <div class="price-item"><span class="price-name">Lash Lifting + Tintura</span><span class="price-value">R$ 250</span></div>
+      <div class="price-item"><span class="price-name">Micropigmentação de Sobrancelhas</span><span class="price-value">R$ 280</span></div>
+    </div>
+  </section>
+</div>
+
+<!-- MASSAGEM -->
+<div id="massagem" class="bg-dark-section">
+  <section>
+    <div class="section-label reveal" style="color: var(--gold);">Serviços</div>
+    <h2 class="section-title reveal">Massagens & <em>Terapias</em></h2>
+    <div class="price-grid reveal">
+      <div class="price-item"><span class="price-name">Massagem Facial</span><span class="price-value">R$ 60</span></div>
+      <div class="price-item"><span class="price-name">Massagem Relaxante</span><span class="price-value">R$ 120</span></div>
+      <div class="price-item"><span class="price-name">Massagem Energética</span><span class="price-value">R$ 130</span></div>
+      <div class="price-item"><span class="price-name">Massagem Modeladora</span><span class="price-value">R$ 120</span></div>
+      <div class="price-item"><span class="price-name">Massagem com Pedras Quentes</span><span class="price-value">R$ 150</span></div>
+      <div class="price-item"><span class="price-name">Massagem Shiatsu</span><span class="price-value">R$ 120</span></div>
+      <div class="price-item"><span class="price-name">Yoga Massagem Ayurvédica</span><span class="price-value">R$ 230</span></div>
+      <div class="price-item"><span class="price-name">Drenagem Linfática</span><span class="price-value">R$ 120</span></div>
+      <div class="price-item"><span class="price-name">Massagem Tui Na</span><span class="price-value">R$ 150</span></div>
+      <div class="price-item"><span class="price-name">Massagem Terapêutica</span><span class="price-value">R$ 120</span></div>
+      <div class="price-item"><span class="price-name">Reflexologia</span><span class="price-value">R$ 90</span></div>
+    </div>
+  </section>
+</div>
+
+<!-- CABELOS -->
+<div id="cabelos" class="bg-warm">
+  <section>
+    <div class="section-label reveal">Leh Hair Stylist</div>
+    <h2 class="section-title reveal"><em>Cabelos</em></h2>
+    <div class="price-grid reveal">
+      <div class="price-item"><span class="price-name">Corte Feminino</span><span class="price-value">R$ 75</span></div>
+      <div class="price-item"><span class="price-name">Corte com Secagem Simples</span><span class="price-value">R$ 90</span></div>
+      <div class="price-item"><span class="price-name">Corte com Escova Simples</span><span class="price-value">R$ 120</span></div>
+      <div class="price-item"><span class="price-name">Corte Masculino</span><span class="price-value">R$ 50</span></div>
+      <div class="price-item"><span class="price-name">Corte Infantil Menino (até 8 anos)</span><span class="price-value">R$ 45</span></div>
+      <div class="price-item"><span class="price-name">Corte Infantil Menina (até 8 anos)</span><span class="price-value">R$ 60</span></div>
+      <div class="price-item"><span class="price-name">Escova a partir de</span><span class="price-value">R$ 55</span></div>
+      <div class="price-item"><span class="price-name">Escova Trabalhada a partir de</span><span class="price-value">R$ 80</span></div>
+      <div class="price-item"><span class="price-name">Penteado</span><span class="price-value">R$ 170</span></div>
+      <div class="price-item"><span class="price-name">Maquiagem</span><span class="price-value">R$ 170</span></div>
+      <div class="price-item"><span class="price-name">Coloração a partir de</span><span class="price-value">R$ 130</span></div>
+      <div class="price-item"><span class="price-name">Mechas / Luzes / Reflexo a partir de</span><span class="price-value">R$ 370</span></div>
+      <div class="price-item"><span class="price-name">Botox a partir de</span><span class="price-value">R$ 150</span></div>
+      <div class="price-item"><span class="price-name">Selagem a partir de</span><span class="price-value">R$ 160</span></div>
+      <div class="price-item"><span class="price-name">Progressiva a partir de</span><span class="price-value">R$ 180</span></div>
+    </div>
+    <p style="text-align:center; margin-top: 1.5rem; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase;">
+      Cabelos — WhatsApp: <a href="https://wa.me/5511988182516" target="_blank" style="color: var(--gold); text-decoration: none;">(11) 98818-2516</a>
+    </p>
+  </section>
+</div>
+
+<!-- DEPILAÇÃO -->
+<div id="depilacao" style="background: var(--cream);">
+  <section>
+    <div class="section-label reveal">Serviços</div>
+    <h2 class="section-title reveal"><em>Depilação</em></h2>
+    <div class="price-grid reveal">
+      <div class="price-item"><span class="price-name">Axilas</span><span class="price-value">R$ 35</span></div>
+      <div class="price-item"><span class="price-name">Virilha Cavada</span><span class="price-value">R$ 40</span></div>
+      <div class="price-item"><span class="price-name">Virilha Completa</span><span class="price-value">R$ 55</span></div>
+      <div class="price-item"><span class="price-name">1/2 Perna</span><span class="price-value">R$ 30</span></div>
+      <div class="price-item"><span class="price-name">Perna Completa</span><span class="price-value">R$ 60</span></div>
+      <div class="price-item"><span class="price-name">Anus</span><span class="price-value">R$ 20</span></div>
+      <div class="price-item"><span class="price-name">Rosto</span><span class="price-value">R$ 25</span></div>
+      <div class="price-item"><span class="price-name">Buço</span><span class="price-value">R$ 15</span></div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTATO -->
+<div id="contato" class="contact-banner">
+  <h2>Agende seu horário</h2>
+  <p>Atendimento personalizado para você</p>
+  <a class="wa-btn" href="https://wa.me/5511948979150" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    (11) 94897-9150
+  </a>
+  <div class="address">Avenida do Taboão, 939 · São Bernardo do Campo – SP<br><br>
+    <span style="color:rgba(255,255,255,0.25); font-size:0.7rem;">* Valores sujeitos a alterações</span>
+  </div>
+</div>
+
+<footer>
+  © 2026 Studio Patricia Hamada · Todos os direitos reservados
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
