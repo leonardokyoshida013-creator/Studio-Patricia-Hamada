@@ -1,0 +1,313 @@
+# ✨ Studio Patricia Hamada
+
+> Website institucional e catálogo digital desenvolvido para um studio de beleza, com foco em **design elegante, experiência do usuário, responsividade e conversão de visitantes em agendamentos**.
+
+O **Studio Patricia Hamada** é uma página web responsiva desenvolvida para apresentar os serviços oferecidos pelo studio, seus respectivos valores e facilitar o contato direto com clientes através do WhatsApp.
+
+O projeto foi desenvolvido utilizando tecnologias web nativas, priorizando uma interface sofisticada, navegação intuitiva e boa experiência em dispositivos desktop e mobile.
+
+---
+
+## 🌐 Visão geral
+
+A aplicação funciona como uma **landing page comercial**, apresentando diferentes categorias de serviços:
+
+* 💅 Manicure
+* 👁️ Sobrancelhas e cílios
+* 💆 Massagens e terapias
+* 💇 Cabelos
+* 🧴 Depilação
+* 📱 Contato e agendamento pelo WhatsApp
+
+---
+
+## 🚀 Funcionalidades
+
+* ✨ Landing page institucional
+* 📋 Catálogo de serviços
+* 💰 Exibição de preços
+* 🧭 Navegação por seções
+* 📱 Layout responsivo para dispositivos móveis
+* 💬 Integração direta com WhatsApp
+* 🎨 Design personalizado
+* 🖱️ Efeitos de interação nos botões e cards
+* ✨ Animações de entrada dos elementos
+* 🔄 Scroll suave entre seções
+* 📌 Menu de navegação fixo
+* 📞 Botão flutuante de contato
+* 🏠 Informações de localização e contato
+
+---
+
+## 🧰 Tecnologias utilizadas
+
+| Tecnologia       | Utilização                                      |
+| ---------------- | ----------------------------------------------- |
+| **HTML5**        | Estrutura semântica da página                   |
+| **CSS3**         | Layout, responsividade, animações e estilização |
+| **JavaScript**   | Interações e animações durante a navegação      |
+| **Google Fonts** | Tipografia personalizada                        |
+| **WhatsApp**     | Canal de contato e agendamento                  |
+
+---
+
+## 🎨 Design e identidade visual
+
+O projeto utiliza uma identidade visual baseada em uma estética sofisticada e minimalista.
+
+Principais características:
+
+* Tons neutros
+* Detalhes dourados
+* Tipografia serifada para títulos
+* Tipografia moderna para textos
+* Seções com diferentes contrastes
+* Cards de serviços
+* Animações suaves
+* Espaçamento amplo
+* Hierarquia visual bem definida
+
+A combinação das fontes **Cormorant Garamond** e **Jost** foi utilizada para criar contraste entre títulos e informações.
+
+---
+
+## 🖥️ Estrutura da página
+
+```text
+Studio Patricia Hamada
+│
+├── Hero
+│   ├── Identidade do Studio
+│   ├── Chamada principal
+│   ├── Botão WhatsApp
+│   └── Botão de serviços
+│
+├── Manicure
+│   └── Lista de serviços e preços
+│
+├── Sobrancelhas & Cílios
+│   └── Lista de serviços e preços
+│
+├── Massagens & Terapias
+│   └── Lista de serviços e preços
+│
+├── Cabelos
+│   └── Lista de serviços e preços
+│
+├── Depilação
+│   └── Lista de serviços e preços
+│
+├── Contato
+│   ├── WhatsApp
+│   └── Localização
+│
+└── Footer
+```
+
+---
+
+## ✨ Animações
+
+O projeto utiliza animações desenvolvidas com **CSS e JavaScript**.
+
+### Hero
+
+Os elementos iniciais possuem animações de entrada utilizando `fadeDown`.
+
+```css
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+```
+
+### Scroll Reveal
+
+Os elementos das seções são revelados conforme entram na área visível da tela.
+
+A implementação utiliza a API nativa:
+
+```javascript
+IntersectionObserver
+```
+
+Isso permite que os componentes sejam animados somente quando aparecem durante a navegação.
+
+---
+
+## 📱 Responsividade
+
+A interface foi desenvolvida para funcionar em diferentes tamanhos de tela.
+
+O projeto utiliza:
+
+* CSS Grid
+* Flexbox
+* Media Queries
+* `clamp()`
+* Layout adaptativo
+* Navegação otimizada para telas menores
+
+Exemplo:
+
+```css
+@media (max-width: 640px) {
+  .nav-links {
+    display: none;
+  }
+}
+```
+
+O objetivo é proporcionar uma experiência adequada tanto em:
+
+```text
+🖥️ Desktop
+💻 Notebook
+📱 Smartphone
+📟 Tablet
+```
+
+---
+
+## 💬 Integração com WhatsApp
+
+O site possui integração direta com o WhatsApp através de links `wa.me`.
+
+Isso permite que o visitante entre em contato com o studio diretamente pelo botão de agendamento.
+
+Exemplo:
+
+```html
+<a href="https://wa.me/...">
+    Agendar pelo WhatsApp
+</a>
+```
+
+Também foi implementado um **botão flutuante**, permitindo acesso rápido ao contato durante a navegação.
+
+---
+
+## 🗂️ Estrutura do projeto
+
+Atualmente o projeto possui uma estrutura simples e direta:
+
+```text
+Studio-Patricia-Hamada/
+│
+└── index.html
+```
+
+O arquivo `index.html` contém:
+
+* Estrutura HTML
+* CSS interno
+* JavaScript
+* Componentes visuais
+* Links de contato
+* Catálogo de serviços
+
+Essa abordagem mantém o projeto simples para publicação e manutenção de uma página institucional de pequeno porte.
+
+---
+
+## ▶️ Como executar
+
+Não são necessárias dependências ou ferramentas de build.
+
+### 1. Clone o projeto
+
+```bash
+git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+```
+
+### 2. Entre na pasta
+
+```bash
+cd Studio-Patricia-Hamada
+```
+
+### 3. Abra o projeto
+
+Basta abrir:
+
+```text
+index.html
+```
+
+em qualquer navegador moderno.
+
+Também é possível utilizar extensões como **Live Server** no Visual Studio Code para executar o projeto durante o desenvolvimento.
+
+---
+
+## 📚 Conceitos aplicados
+
+Este projeto demonstra conhecimentos em:
+
+* Desenvolvimento Front-End
+* HTML5
+* CSS3
+* JavaScript
+* Design responsivo
+* UI/UX
+* CSS Grid
+* Flexbox
+* Media Queries
+* CSS Animations
+* Transições
+* Intersection Observer API
+* Navegação por âncoras
+* Integração com serviços externos
+* Mobile First / Responsive Design
+* Organização de interfaces comerciais
+
+---
+
+## 🔮 Possíveis melhorias
+
+Para uma próxima versão, algumas funcionalidades poderiam ser adicionadas:
+
+* 📅 Sistema de agendamento online
+* 📆 Calendário com horários disponíveis
+* 🗄️ Banco de dados para clientes
+* 🔐 Área administrativa
+* 📊 Dashboard para gerenciamento de agendamentos
+* 📸 Galeria de trabalhos realizados
+* ⭐ Sistema de avaliações
+* 📧 Formulário de contato
+* 🔔 Notificações de agendamento
+* ☁️ Deploy em servidor
+* 📈 Google Analytics
+* 🔎 Otimização SEO
+* ♿ Melhorias de acessibilidade
+
+---
+
+## 🎯 Objetivo profissional
+
+O projeto demonstra a capacidade de transformar uma necessidade comercial em uma **interface web funcional e visualmente estruturada**, utilizando tecnologias Front-End sem depender de frameworks.
+
+O foco principal foi criar uma experiência que facilite a descoberta dos serviços e conduza o visitante para o **contato e agendamento**, mantendo uma identidade visual profissional.
+
+---
+
+## 👨‍💻 Projeto
+
+**Studio Patricia Hamada — Website Institucional**
+
+Desenvolvido com foco em:
+
+> **Front-End • UI/UX • Design Responsivo • JavaScript • Desenvolvimento Web**
+
+---
+
+## 📄 Licença
+
+Projeto desenvolvido para fins de portfólio e demonstração de habilidades em desenvolvimento web.
